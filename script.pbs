@@ -1,0 +1,13 @@
+#PBS -q mamba
+#PBS -N  out
+#PBS -l nodes=1:ppn=1:gpus=1
+#PBS -l walltime=00:10:00
+### run job
+module load cuda/9.2
+cd $PBS_O_WORKDIR
+echo "hostname: `hostname -s` ..."
+rm out
+make out
+echo -e "running:  ./out ...\n          \c"
+./out
+echo ""
